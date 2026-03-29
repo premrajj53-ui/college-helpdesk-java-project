@@ -51,7 +51,7 @@ public class Main {
                        System.out.println("******************************");
 
                        System.out.println("Prees 1 : to view all complaints and manage complaints");
-                       System.out.println("prees 3 : to exit");
+                       System.out.println("prees 2 : to exit");
                        int adminChoice = sc.nextInt();
                        if (adminChoice ==1){
                            System.out.println("--- All complaints ---");
@@ -78,6 +78,7 @@ public class Main {
 
                                System.out.println("Enter new status (e.g., Resolved, In Progress or Rejected) :");
                                String newStatus = sc.nextLine();
+                               sc.nextLine();
                                foundComplaint.status = newStatus;
 
                                System.out.print("Add a note explaining why (or press Enter to skip): ");
@@ -87,13 +88,16 @@ public class Main {
                                }
 
                                System.out.println(" Ticket #" + checkId + " successfully updated!");
+                               System.out.println("Press Enter to return to the main menu...");
+                               sc.nextLine();
                                continue;
+
 
                            }
 
                            }
                        }
-                       else if (adminChoice == 2) {
+                       else if (adminChoice == 2 ) {
                            adminLogin = false;
                            System.out.println("Logging out...");
                        }
