@@ -43,7 +43,7 @@ public class Main {
                    System.out.println("---Admin portal---");
                    break;
                case 3:
-                   System.out.printf("Exiting....");
+                   System.out.print("Exiting....");
                    isRunning = false;
                    break;
                default:
