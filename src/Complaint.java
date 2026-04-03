@@ -9,7 +9,7 @@ public class Complaint {
         this.id=id;
         this.description=description;
         this.studentId=studentId;
-        this.status="pending";
+        this.status=status.isEmpty()?"pending":status;
         this.adminNote="no note yet!";
     }
     void display(){

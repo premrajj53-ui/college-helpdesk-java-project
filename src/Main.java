@@ -5,8 +5,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String []args){
         Scanner sc = new Scanner(System.in);
+
         boolean isRunning = true;
-        HashMap <Integer,Complaint> comlaintmap = new HashMap<>();
+        HashMap <Integer,Complaint> comlaintMap = new HashMap<>();
+        HashMap <String,String>studentsInfoMap = new HashMap<>();
+        Fileswork.studentsInfo(studentsInfoMap);
+        System.out.println(studentsInfoMap);
         int compId = 1;
        while (isRunning) {
            System.out.println(":---Help-Desk---:");
@@ -22,25 +26,7 @@ public class Main {
 
                switch (choice) {
                    case 1:
-
-                       System.out.println("\n---Student portal---");
-                       System.out.print("Enter Student Id :");
-                       String stId = sc.nextLine();
-                       System.out.println("Describe your issue : ");
-                       String desc = sc.nextLine();
-                       Complaint c1 = new Complaint(compId, desc, "", stId, "");
-
-                       comlaintmap.put(compId, c1);
-                       System.out.println("\n------------------------------------");
-                       System.out.println("Complaint raised successfully!");
-                       System.out.println("------------------------------------");
-                       System.out.println("Complaint Id :" + compId);
-                       System.out.println("Complaint :" + desc);
-                       System.out.println("Student Id :" + stId);
-                       System.out.println("------------------------------------");
-                       compId++;
-                       System.out.println("Press Enter to return to the main menu...");
-                       sc.nextLine();
+                   compId=   Studentportal.openPortal(sc,comlaintMap ,studentsInfoMap,compId);
 
 
                        break;
@@ -61,11 +47,11 @@ public class Main {
                                     int adminChoice = sc.nextInt();
                                     if (adminChoice == 1) {
                                         System.out.println("--- All complaints ---");
-                                        if (comlaintmap.isEmpty()) {
+                                        if (comlaintMap.isEmpty()) {
                                             System.out.println("No complaint has been raised yet!");
 
                                         } else {
-                                            for (Complaint c : comlaintmap.values()) {
+                                            for (Complaint c : comlaintMap.values()) {
                                                 c.display();
                                                 System.out.println("-----------------------");
                                                 sc.nextLine();
@@ -77,9 +63,9 @@ public class Main {
                                                     System.out.println("Returning to dashboard...");
                                                     continue;
                                                 }
-                                                if (comlaintmap.containsKey(checkId)) {
+                                                if (comlaintMap.containsKey(checkId)) {
 
-                                                    Complaint foundComplaint = comlaintmap.get(checkId);
+                                                    Complaint foundComplaint = comlaintMap.get(checkId);
                                                     System.out.println("current status:" + foundComplaint.status);
 
                                                     System.out.println("Enter new status (e.g., Resolved, In Progress or Rejected) :");
@@ -141,5 +127,6 @@ public class Main {
            }
        }
     }
+
 
 }
