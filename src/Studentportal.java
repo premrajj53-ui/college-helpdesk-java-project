@@ -19,6 +19,7 @@ public class Studentportal {
                      String stId = sc.nextLine().trim();
 
                      if (studentInfo.containsKey(stId)) {
+                         System.out.println("welcome"+" "+studentInfo.get(stId));
                          System.out.println("Describe your issue : ");
                          String desc = sc.nextLine();
                          Complaint c1 = new Complaint(compId, desc, "", stId, "");
@@ -40,8 +41,34 @@ public class Studentportal {
                      }
                      break;
                  case 2:
-                     System.out.println("view complaint");
+                     System.out.print("Enter your Complaint ID to check status: ");
+                     int searchId = sc.nextInt();
+                     sc.nextLine();
+
+
+                     if (complaintMap.containsKey(searchId)) {
+                         Complaint found = complaintMap.get(searchId);
+
+                         System.out.print("Enter your Student ID for verification: ");
+                         String verifyStId = sc.nextLine().trim();
+
+                         if (found.studentId.equals(verifyStId)) {
+                             System.out.println("\n--- Complaint Status ---");
+                             System.out.println("ID: " + searchId);
+                             System.out.println("Status: " + found.status);
+                             System.out.println("Admin Note: " + (found.adminNote.isEmpty() ? "No response yet." : found.adminNote));
+                             System.out.println("------------------------");
+                         } else {
+                             System.out.println("Access Denied: Student ID does not match this Complaint ID.");
+                         }
+                     } else {
+                         System.out.println("Error: Complaint ID #" + searchId + " not found.");
+                     }
+                     System.out.println("Press Enter to continue...");
+                     sc.nextLine();
+
                      break;
+
                  case 3:
                      System.out.println("Exiting....");
                      isRunning=false;

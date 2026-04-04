@@ -10,7 +10,7 @@ public class Main {
         HashMap <Integer,Complaint> comlaintMap = new HashMap<>();
         HashMap <String,String>studentsInfoMap = new HashMap<>();
         Fileswork.studentsInfo(studentsInfoMap);
-        System.out.println(studentsInfoMap);
+
         int compId = 1;
        while (isRunning) {
            System.out.println(":---Help-Desk---:");
@@ -19,7 +19,7 @@ public class Main {
            System.out.println("2.Admin");
            System.out.println("3.Exit");
            try {
-               System.out.println("Enter your choice: 1 , 2 ,3 :");
+               System.out.print("Enter your choice: 1 , 2 ,3 :");
 
                int choice = sc.nextInt();
                sc.nextLine();
@@ -59,6 +59,7 @@ public class Main {
                                             try{System.out.println("Enter complaint Id to update status(or 0 to go back)");
                                                 int checkId = -1;
                                                 checkId = sc.nextInt();
+                                                sc.nextLine();
                                                 if (checkId == 0) {
                                                     System.out.println("Returning to dashboard...");
                                                     continue;
@@ -71,7 +72,8 @@ public class Main {
                                                     System.out.println("Enter new status (e.g., Resolved, In Progress or Rejected) :");
                                                     String newStatus = sc.nextLine();
                                                     foundComplaint.status = newStatus;
-                                                    sc.nextLine();
+
+
 
                                                     System.out.print("Add a note explaining why (or press Enter to skip): ");
                                                     String newNote = sc.nextLine();

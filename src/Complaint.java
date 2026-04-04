@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Complaint {
 
     int id;
@@ -19,4 +21,6 @@ public class Complaint {
         System.out.println("StudentId:"+ studentId);
         System.out.println("AdminNote:"+adminNote);
     }
+
+
 }
